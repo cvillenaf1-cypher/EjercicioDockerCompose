@@ -1,24 +1,54 @@
 version: '3.8'
 
 services:
- 
+
   api1:
-    image: nmatsui/hello-world-api:0.1.1 
-      
+    container_name: api1
+    build: ./api
     ports:
       - 3000:3000
- 
+    environment:
+      - MESSAGE="CRISTHIAN VILLENA"
+      - PORT=3000
+    depends_on:
+      - db
    
   api2:
-    image: nmatsui/hello-world-api:0.1.1 
-      
+    container_name: api2
+    build: ./api
     ports:
       - 3001:3000
+    environment:
+      - MESSAGE="CRISTHIAN VILLENA"
+      - PORT=3000
+    depends_on:
+      - db
   
-
   api3:
-    image: nmatsui/hello-world-api:0.1.1 
-      
+    container_name: api3
+    build: ./api
     ports:
       - 3002:3000
+    environment:
+      - MESSAGE="CRISTHIAN VILLENA"
+      - PORT=3000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: USER
+      POSTGRES_PASSWORD: CONTRASEÑA
+      POSTGRES_DB: MYBASE
+
+      #ES NECESARIO ALMACENAR EN MI  DISCO  DE LO CONTRARIO SE BORRAN LOS DATOS 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   
+
+volumes:
+  postgres_data:
+    driver: local
+
