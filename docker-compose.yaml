@@ -9,7 +9,7 @@ services:
       - 3000:3000
     environment:
       - MESSAGE="CRISTHIAN VILLENA"
-      - PORT=3000
+     
     depends_on:
       - db
    
@@ -20,7 +20,7 @@ services:
       - 3001:3000
     environment:
       - MESSAGE="CRISTHIAN VILLENA"
-      - PORT=3000
+      
     depends_on:
       - db
   
@@ -31,7 +31,7 @@ services:
       - 3002:3000
     environment:
       - MESSAGE="CRISTHIAN VILLENA"
-      - PORT=3000
+     
     depends_on:
       - db
 
@@ -39,11 +39,11 @@ services:
     image: postgres:13
     container_name: postgres_db
     environment:
-      POSTGRES_USER: USER
-      POSTGRES_PASSWORD: CONTRASEÑA
-      POSTGRES_DB: MYBASE
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_CONTRA}
+      POSTGRES_DB: ${POSTGRES_DB}
 
-      #ES NECESARIO ALMACENAR EN MI  DISCO  DE LO CONTRARIO SE BORRAN LOS DATOS 
+     
     volumes:
       - postgres_data:/var/lib/postgresql/data
   
